@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./vue.js"></script>
+    <script src="https://unpkg.com/vue-router@3.0.0/dist/vue-router.js"></script>
+    <!-- <script src="https://cdn.staticfile.org/vue-resource/1.5.1/vue-resource.min.js"></script> -->
+    <!-- <link rel="stylesheet" href="./bootstrap.css"> -->
+
+</head>
+<body>
+    <div id="app">
+
+
+          <router-link to="/login?id=10">登陆</router-link>
+          <router-link to="/register">注册</router-link>
+
+        <router-view></router-view>
+
+    </div>
+
+
+    <script>
+        var login = {
+            template:'<h1>登陆</h1>',
+            created(){
+                console.log(this.$route);
+            }
+        }
+        var register = {
+            template:'<h1>注册</h1>'
+        }
+
+        var router = new VueRouter({
+            routes:[
+                {path:'/login', component:login},
+                {path:'/register', component:register}
+            ]
+
+        })
+
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                list:[
+                    { id:1, user:"李白", content:"天生我材必有用"},
+                    { id:2, user:"江小白", content:"劝君更尽一杯酒"},
+                    { id:3, user:"小马", content:"我的名言"}
+                ]
+            },
+            methods: {
+            },
+            router: router
+        })
+
+
+    </script>
+</body>
+</html>
